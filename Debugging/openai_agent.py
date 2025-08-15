@@ -15,3 +15,23 @@ class State(TypedDict):
     
 
 model = ChatOpenAI(temperature=0)
+
+def make_default_graph():
+    workflow = StateGraph(State)
+    
+    def call_model(state: State):
+        return {
+            'messages': [model.invoke(state['messages'])]
+        }
+    
+    workflow.add_node('agent', call_model)
+    workflow.add_edge('agent', START)
+    workflow.add_edge('agent', END)
+    
+    agent = workflow.compile()
+    
+    return agent
+
+agent = make_default_graph()
+
+
