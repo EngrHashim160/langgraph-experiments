@@ -4,3 +4,4 @@ langchain_openai
 dotenv
 langchain_groq
 streamlit
+langgraph-cli[inmem]
