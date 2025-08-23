@@ -6,3 +6,4 @@ langchain_groq
 streamlit
 langgraph-cli[inmem]
 beautifulsoup4
+faiss-cpu
